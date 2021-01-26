@@ -250,7 +250,7 @@ public class RTDatabaseReference {
         STATUS = lastHttpAction.GET.name();
         jsonItems.add(new JsonItems(GET,paths));
         if (STATUS.equals(lastHttpAction.GET.name())) {
-            System.out.println("Ready to place http get");
+//            System.out.println("Ready to place http get");
 
             JSONObject outgoingJson = new JSONObject();
             outgoingJson.put("isDatabaseDestined", true);
@@ -277,7 +277,7 @@ public class RTDatabaseReference {
                 oInstances.put(String.valueOf(i), lastInstances);
                 outgoingJson.put("instances", oInstances.toJSONString());
             }
-            System.out.println(outgoingJson.toJSONString());
+//            System.out.println(outgoingJson.toJSONString());
 //            sendGetHttpRequest(outgoingJson.toJSONString(),datasnapShoti);
             new SendGetThread(outgoingJson.toJSONString(),datasnapShoti).start();
         }
@@ -348,9 +348,9 @@ public class RTDatabaseReference {
 //                bSubmit.setForeground(Color.black);
 //                bSubmit.setText("Submit");
             }
-            System.out.println("FIREBASE HTTP RESPONSE"+String.valueOf(code));
+//            System.out.println("FIREBASE HTTP RESPONSE"+String.valueOf(code));
         } catch (IOException ioException) {
-            System.out.println("Network issue");
+//            System.out.println("Network issue");
             ioException.printStackTrace();
         }
         try(BufferedReader br = new BufferedReader(
@@ -360,7 +360,7 @@ public class RTDatabaseReference {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }
-            System.out.println(response.toString());
+//            System.out.println(response.toString());
             JSONParser parser = new JSONParser();
             try {
                 Object oResponse = parser.parse(response.toString());
@@ -388,14 +388,14 @@ public class RTDatabaseReference {
                             String getResponse2 = (String) jsonObject.get("getResponsePath");
                             Object oRespio = parser.parse(!getResponseio.equals("{}")?getResponseio:getResponse2);
                             JSONObject jorespio = (JSONObject) oRespio;
-                            System.out.println("Json object size: " + jorespio.size()+": "+jorespio.toJSONString());
+//                            System.out.println("Json object size: " + jorespio.size()+": "+jorespio.toJSONString());
                             String firstMatch = jorespio.toJSONString();
-                            System.out.println("String to be parsed: " + firstMatch);
+//                            System.out.println("String to be parsed: " + firstMatch);
 
                             datasnapShoti.onDataMismatch(new DataSnap(firstMatch,mismatchList));
                         } catch (NullPointerException ed) {}
 
-                        System.out.println("String to be parsed mismatch: "+Arrays.toString(mismatchList.toArray()));
+//                        System.out.println("String to be parsed mismatch: "+Arrays.toString(mismatchList.toArray()));
 
                     }
                     catch (Exception e) {
@@ -411,9 +411,9 @@ public class RTDatabaseReference {
                             String getResponse2 = (String) jsonObject.get("getResponsePath");
                             Object oResp = parser.parse(!getResponse.equals("{}")?getResponse:getResponse2);
                             JSONObject joresp = (JSONObject) oResp;
-                            System.out.println("Json object size: " + joresp.size()+": "+joresp.toJSONString());
+//                            System.out.println("Json object size: " + joresp.size()+": "+joresp.toJSONString());
                             String firstMatch = joresp.toJSONString();
-                            System.out.println("String to be parsed: " + firstMatch);
+//                            System.out.println("String to be parsed: " + firstMatch);
 
                             datasnapShoti.onDataLoaded(new DataSnap(firstMatch));
                         } catch (NullPointerException ed) {}
@@ -472,7 +472,7 @@ public class RTDatabaseReference {
                 try {
                     jsonObject = (JSONObject) obj;
                 } catch (ClassCastException e) {
-                    System.out.println("parsed object already a string");
+//                    System.out.println("parsed object already a string");
                 }
                 try {
                     s = (String) jsonObject.get(key);
@@ -520,7 +520,7 @@ public class RTDatabaseReference {
                 JSONObject jsonObject = (JSONObject) obj;
                 jsonObject.keySet().forEach(keystr->{
                     Object oValue = jsonObject.get(keystr);
-                    System.out.println("json loop: "+keystr);
+//                    System.out.println("json loop: "+keystr);
                     keys.add(String.valueOf(oValue));
                 });
             } catch (ClassCastException e) {

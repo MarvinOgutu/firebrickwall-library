@@ -205,7 +205,7 @@ public class FireBrickWall extends RTDatabaseReference  {
             }
         }
         if (RTDatabaseReference.STATUS.equals(lastHttpAction.SET.name())) {
-            System.out.println("Ready to place http get");
+//            System.out.println("Ready to place http get");
 
             JSONObject outgoingJson = new JSONObject();
             outgoingJson.put("isDatabaseDestined", true);
@@ -232,12 +232,12 @@ public class FireBrickWall extends RTDatabaseReference  {
                 oInstances.put(String.valueOf(i), lastInstances);
                 outgoingJson.put("instances", oInstances.toJSONString());
             }
-            System.out.println(outgoingJson.toJSONString());
+//            System.out.println(outgoingJson.toJSONString());
 //            sendHttpRequest(outgoingJson.toJSONString());
             new SendHttpThread(outgoingJson.toJSONString()).start();
         }
         else if (RTDatabaseReference.STATUS.equals(lastHttpAction.DELETE.name())) {
-            System.out.println("preping to delete");
+//            System.out.println("preping to delete");
             JSONObject outgoingJson = new JSONObject();
             outgoingJson.put("isDatabaseDestined", true);
             outgoingJson.put("httpMethod", "DELETE");
@@ -262,7 +262,7 @@ public class FireBrickWall extends RTDatabaseReference  {
                 oInstances.put(String.valueOf(i), lastInstances);
                 outgoingJson.put("instances", oInstances.toJSONString());
             }
-            System.out.println(outgoingJson.toJSONString());
+//            System.out.println(outgoingJson.toJSONString());
 //            sendHttpRequest(outgoingJson.toJSONString());
             new SendHttpThread(outgoingJson.toJSONString()).start();
         }
@@ -317,7 +317,7 @@ public class FireBrickWall extends RTDatabaseReference  {
 //                bSubmit.setForeground(Color.black);
 //                bSubmit.setText("Submit");
             }
-            System.out.println("FIREBASE HTTP RESPONSE"+String.valueOf(code));
+//            System.out.println("FIREBASE HTTP RESPONSE"+String.valueOf(code));
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -328,7 +328,7 @@ public class FireBrickWall extends RTDatabaseReference  {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }
-            System.out.println(response.toString());
+//            System.out.println(response.toString());
         } catch (UnsupportedEncodingException unsupportedEncodingException) {
             unsupportedEncodingException.printStackTrace();
         } catch (IOException ioException) {
